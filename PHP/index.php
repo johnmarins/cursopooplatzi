@@ -1,46 +1,12 @@
 <?php
+require_once("car.php");
+require_once("uberX.php");
+require_once("uberPool.php");
+require_once("account.php");
 
-abstract class Base 
-{
-    protected $name;
+$uberX = new UberX("CVB123",new Account("Andres Herrera", "ASD456"), "Chevrolet", "Spark");
+$uberX->printDataCar();
 
-    private function getClassName()
-    {
-        return get_called_class();
-    }
-
-    public function login()
-    {
-        return "Mi nombre es $this->name desde la clase {$this->getClassName()}";
-    }
-}
-
-class Admin extends Base
-{
-    public function __constructor($name)
-    {
-        $this->name = $name;
-    }
-}
-
-class User extends Base
-{
-    public function __constructor($name)
-    {
-        $this->name = $name;
-    }
-}
-
-class Guest extends Base
-{
-    protected $name = "Invitado";
-}
-
-$guest = new Guest();
-echo $guest->login();
-
-$user = new User('Italo');
-echo $user->login();
-
-$admin = new User('Lynda');
-echo $admin->login();
+$uberPool = new UberPool("TYU567",new Account("Andrea Ferran", "ANDA765"), "Dodge", "Attitude");
+$uberPool->printDataCar();
+?>
